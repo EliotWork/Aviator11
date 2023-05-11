@@ -99,25 +99,29 @@ fun Aviator11PolygonItems(viewModel: Aviator11PolygonViewModel) {
             Modifier
                 .alpha(viewModel.aviator11XBarrier3Yalpha)
                 .offset {
-                    IntOffset(Aviator11OffsetXList[viewModel.aviator11XBarrier3X],
-                        aviator11Barrier3Y)
+                    IntOffset(
+                        Aviator11OffsetXList[viewModel.aviator11XBarrier3X],
+                        aviator11Barrier3Y
+                    )
                 })
 
         Image(painter = painterResource(id = R.drawable.barrier04), contentDescription = "",
             Modifier
                 .alpha(viewModel.aviator11XBarrier4Yalpha)
                 .offset {
-                    IntOffset(Aviator11OffsetXList[viewModel.aviator11XBarrier4X],
-                        aviator11Barrier4Y)
+                    IntOffset(
+                        Aviator11OffsetXList[viewModel.aviator11XBarrier4X],
+                        aviator11Barrier4Y
+                    )
                 })
     }
 }
 
 @Composable
 private fun aviator11YAnimation(aviator11animation: Boolean, aviator11FinishedListener: ((Int) -> Unit))
-    = animateIntAsState(targetValue = if (aviator11animation) -2000 else 1000,
-        animationSpec = tween(4000, 0, LinearEasing),
-        finishedListener = aviator11FinishedListener)
+        = animateIntAsState(targetValue = if (aviator11animation) -2000 else 1000,
+    animationSpec = tween(4000, 0, LinearEasing),
+    finishedListener = aviator11FinishedListener)
 
 @Composable
 fun Aviator11PolygonPauseBtn(aviator11PauseStatus: Boolean, aviator11PauseAction: () -> Unit) {
@@ -157,11 +161,40 @@ fun Aviator11PolygonScoreLifeCoinsTab(aviator11Lives: Int, aviator11Score: Int, 
 }
 
 @Composable
-fun Aviator11PolygonControlButtons(aviator11ArrowLeft: () -> Unit, aviator11ArrowRight: () -> Unit, aviator11BtnsAlpha: Float) {
-    Box(Modifier.fillMaxSize().padding(bottom = 20.dp).alpha(aviator11BtnsAlpha),
+fun Aviator11PolygonBetBtn(
+    aviator11Polygon: () -> Unit
+) {
+    Box(
+        Modifier
+            .fillMaxSize()
+            .padding(bottom = 20.dp),
         contentAlignment = Alignment.BottomCenter
     ) {
-        Row(Modifier.fillMaxWidth().padding(horizontal = 45.dp),
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 45.dp),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Image(painter = painterResource(id = R.drawable.bet01), contentDescription = "",
+                Modifier.width(100.dp).height(40.dp).clickable(onClick = aviator11Polygon))
+        }
+    }
+}
+
+@Composable
+fun Aviator11PolygonControlButtons(aviator11ArrowLeft: () -> Unit, aviator11ArrowRight: () -> Unit, aviator11BtnsAlpha: Float) {
+    Box(
+        Modifier
+            .fillMaxSize()
+            .padding(bottom = 20.dp)
+            .alpha(aviator11BtnsAlpha),
+        contentAlignment = Alignment.BottomCenter
+    ) {
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 45.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Image(painter = painterResource(id = R.drawable.arrow01), contentDescription = "")
@@ -172,16 +205,24 @@ fun Aviator11PolygonControlButtons(aviator11ArrowLeft: () -> Unit, aviator11Arro
         contentAlignment = Alignment.BottomCenter
     ) {
         Row(Modifier.fillMaxWidth()) {
-            Spacer(Modifier.weight(1f).height(300.dp).clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null,
-                onClick =  aviator11ArrowLeft
-            ))
-            Spacer(Modifier.weight(1f).height(300.dp).clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null,
-                onClick =  aviator11ArrowRight
-            ))
+            Spacer(
+                Modifier
+                    .weight(1f)
+                    .height(300.dp)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null,
+                        onClick = aviator11ArrowLeft
+                    ))
+            Spacer(
+                Modifier
+                    .weight(1f)
+                    .height(300.dp)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null,
+                        onClick = aviator11ArrowRight
+                    ))
         }
     }
 }

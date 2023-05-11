@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">Aviator</string>
-    <string name="privacy_policy">privacy policy</string>
     <string name="quit_question">Do you really\nwant to quit?</string>
     <string name="paused_question">Would you like\nto continue?</string>
     <string name="score">score:</string>
     <string name="best">best:</string>
     <string name="coins">coins:</string>
     <string name="background">background</string>
+    <string name="bet">bet</string>
     <string name="plane">plane</string>
+    <string name="aviator11_rate_zero">Rate cannot be equal to 0</string>
+    <string name="aviator11_rate_over">The bet cannot exceed the number of coins</string>
 
 </resources>

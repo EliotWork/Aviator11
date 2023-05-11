@@ -32,7 +32,6 @@ import com.crashaviatorjogo.slod.view.viewmodels.Aviator11MenuViewModel
 fun Aviator11MenuScreen(navHostController: NavHostController) {
     val viewModel = hiltViewModel<Aviator11MenuViewModel>()
     Aviator11MenuBg(viewModel.aviator11Background)
-    val context = LocalContext.current
 
     Box(Modifier.fillMaxSize().padding(end = 60.dp),
         contentAlignment = Alignment.CenterEnd
@@ -40,6 +39,8 @@ fun Aviator11MenuScreen(navHostController: NavHostController) {
         Column(verticalArrangement = Arrangement.spacedBy(15.dp)) {
             Image(painter = painterResource(id = R.drawable.start), contentDescription = "",
                 Modifier.clickable { navHostController.navigate("Aviator11PolygonScreen") })
+            Image(painter = painterResource(id = R.drawable.bet01), contentDescription = "",
+                Modifier.clickable { navHostController.navigate("Aviator11BetScreen") })
             Image(painter = painterResource(id = R.drawable.shop), contentDescription = "",
                 Modifier.clickable { navHostController.navigate("Aviator11ShopScreen") })
             Image(painter = painterResource(id = R.drawable.settings01), contentDescription = "",
@@ -59,33 +60,5 @@ fun Aviator11MenuScreen(navHostController: NavHostController) {
         exit = fadeOut()
     ) {
         Aviator11QuitScreen(viewModel)
-    }
-    Box(Modifier.fillMaxSize().padding(bottom = 20.dp),
-        contentAlignment = Alignment.BottomCenter
-    ) {
-        Text(text = stringResource(id = R.string.privacy_policy),
-            Modifier.clickable { openTab(context) })
-    }
-}
-
-fun openTab(context: Context) {
-    val packageName = "com.android.chrome"
-    val URL = "https://docs.google.com/document/d/1Xjl7-TEDyvb0K0-qfYu6y6hA8AS47RjlxdTOHyc0-Mo "
-
-    val activity = (context as? Activity)
-    val builder = CustomTabsIntent.Builder()
-    builder.setShowTitle(true)
-    builder.setInstantAppsEnabled(true)
-
-    builder.setToolbarColor(ContextCompat.getColor(context, R.color.white))
-    val customBuilder = builder.build()
-
-    if (packageName != null) {
-        customBuilder.intent.setPackage(packageName)
-        customBuilder.launchUrl(context, Uri.parse(URL))
-    } else {
-        val i = Intent(Intent.ACTION_VIEW, Uri.parse(URL))
-
-        activity?.startActivity(i)
     }
 }

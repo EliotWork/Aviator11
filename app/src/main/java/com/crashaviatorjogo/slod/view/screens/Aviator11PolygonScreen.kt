@@ -23,6 +23,7 @@ fun Aviator11PolygonScreen(navHostController: NavHostController) {
         aviator11BtnsAlpha = viewModel.aviator11ControlBtnsAlpha
     )
     Aviator11PolygonItems(viewModel)
+    Aviator11PolygonBetBtn { navHostController.navigate("Aviator11BetScreen") }
 
     AnimatedVisibility(viewModel.aviator11DoneScreenVisibility,
         enter = fadeIn(),

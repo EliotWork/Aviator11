@@ -36,7 +36,7 @@ fun aviator11SettingsConstraint(): ConstraintSet {
         constrain(av11sContent) {
             start.linkTo(av11sBg.start)
             end.linkTo(av11sBg.end)
-            top.linkTo(av11sTitle.bottom)
+            top.linkTo(av11sClose.bottom)
             bottom.linkTo(av11sBg.bottom, margin = 14.dp)
         }
     }
